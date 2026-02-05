@@ -532,12 +532,21 @@ newReportBtn.addEventListener('click', () => {
   showStep('step-photo');
 });
 
-// Load saved email from localStorage
+// Load saved email from localStorage (with default)
+const DEFAULT_EMAIL = 'matt.lewsey@gmail.com';
+const DEFAULT_NAME = 'Matt Lewsey';
+
 if (localStorage.getItem('rubbish-reporter-email')) {
   emailInput.value = localStorage.getItem('rubbish-reporter-email');
+} else {
+  emailInput.value = DEFAULT_EMAIL;
+  localStorage.setItem('rubbish-reporter-email', DEFAULT_EMAIL);
 }
 if (localStorage.getItem('rubbish-reporter-name')) {
   nameInput.value = localStorage.getItem('rubbish-reporter-name');
+} else {
+  nameInput.value = DEFAULT_NAME;
+  localStorage.setItem('rubbish-reporter-name', DEFAULT_NAME);
 }
 
 // Save email/name on input

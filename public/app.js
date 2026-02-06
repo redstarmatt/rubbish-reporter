@@ -226,8 +226,9 @@ async function submitRegularReport(report, itemElement) {
       throw new Error(data.error || 'Submission failed');
     }
 
-    // Show success
-    itemElement.querySelector('.report-name').textContent = 'Submitted!';
+    // Show success with service indicator
+    const successText = data.service === 'LoveCleanStreets' ? 'Submitted!' : 'Submitted (check email)';
+    itemElement.querySelector('.report-name').textContent = successText;
     setTimeout(() => {
       itemElement.classList.remove('submitting');
       itemElement.querySelector('.report-name').textContent = originalName;
@@ -458,7 +459,12 @@ submitBtn.addEventListener('click', async () => {
       throw new Error(data.error || 'Submission failed');
     }
 
-    successMessage.textContent = data.message || 'Check your email to confirm the report.';
+    // Show success message with service info
+    let msg = data.message || 'Report submitted!';
+    if (data.service === 'LoveCleanStreets') {
+      msg = 'Report submitted to Love Clean Streets! No email confirmation needed.';
+    }
+    successMessage.textContent = msg;
 
     // Store current values for potential saving as regular report
     currentCategory = categorySelect.value;

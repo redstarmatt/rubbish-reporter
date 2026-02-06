@@ -285,6 +285,11 @@ photoInput.addEventListener('change', (e) => {
     preview.src = e.target.result;
     preview.classList.remove('hidden');
     analyzeBtn.classList.remove('hidden');
+
+    // Scroll to analyze button so user can see it
+    setTimeout(() => {
+      analyzeBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
   };
   reader.readAsDataURL(file);
 });

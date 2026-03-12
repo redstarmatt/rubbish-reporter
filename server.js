@@ -233,7 +233,7 @@ async function submitToLcs(latitude, longitude, category, description, reporterN
     ResponseRequired: false,
     Tags: [],
     StatusId: 1,
-    Email: session.email,
+    Email: '',
     Answers: [],
     Address: ''
   };
